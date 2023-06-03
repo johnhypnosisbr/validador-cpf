@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100;
+        }
+
+        .input-container {
+            
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input {
+            padding: 20px;
+        }
+        .btn {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-container">
+            <form action="inicio.php" method="post">
+            <input id="cpf" placeholder="CPF" name='cpf' autocomplete="off" maxlength="14"
+                oninput="this.value = this.value.replace(/[^0-9.-]/g, '')" required>
+            <button class="btn" onclick="submit">Validar</button>
+        </form>
+            <!-- <input type="text" id="resultado" placeholder="RESULTADO" disabled> -->
+        </div>
+    </div>
+
+    <script>
+        //FORMATADOR DO NUMERO CPF NO HTML - INSERE PONTO E TRAÇO
+        const input = document.getElementById('cpf');
+
+        input.addEventListener('keypress', () => {
+
+            let inputLength = input.value.length;
+
+            if (inputLength === 3 || inputLength === 7) {
+                input.value += '.';
+            } else if (inputLength === 11) {
+                input.value += '-';
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
